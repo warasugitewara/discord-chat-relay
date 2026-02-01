@@ -112,6 +112,7 @@ build/libs/discord-chat-relay-1.0.0.jar
 
 ### 依存関係
 - **Quilt Loader** - MOD ローダー
+- **Fabric API** - Minecraft Fabric API
 - **Discord4J** - Discord ボット API
 - **Reactor** - リアクティブ処理
 - **ModMenu** - コンフィグ GUI（オプション）
