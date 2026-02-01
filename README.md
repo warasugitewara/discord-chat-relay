@@ -21,11 +21,43 @@ Quilt 1.21.10向けのClient側modで、Minecraftのすべてのチャットメ�
 - Cloth Config（ModMenuと一緒に使用）
 - BetterF3（オプション、HUD表示用）
 
+## インストール
+
+### 前提条件
+- Minecraft 1.21.10
+- Quilt Loader（0.27.0以上）
+- **VSCode** + **Java Extension Pack**（ビルド用）
+
 ### インストール手順
 
 1. `discord-chat-relay-1.0.0.jar`をModsフォルダにコピー
 2. Minecraftを起動
 3. ModMenuのDiscord Chat Relayを開いて設定
+
+## ビルド（開発者向け）
+
+### 最も簡単: VSCode
+
+```powershell
+# プロジェクトを開く
+cd C:\Users\waras\Workspace\DiscordChatRelay
+code .
+
+# VSCodeで Ctrl+Shift+B を押す
+```
+
+詳細は [VSCODE_QUICK.md](VSCODE_QUICK.md) を参照
+
+### コマンドラインビルド
+
+```bash
+# Windows
+cd C:\Users\waras\Workspace\DiscordChatRelay
+.\gradlew.bat build
+
+# Mac/Linux
+./gradlew build
+```
 
 ## Discord Bot の準備
 
