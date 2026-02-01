@@ -18,9 +18,6 @@
     "entrypoints": {
       "init": [
         "com.github.waras.discordchatrelay.DiscordChatRelayMod"
-      ],
-      "modmenu": [
-        "com.github.waras.discordchatrelay.screen.ModMenuConfigScreen"
       ]
     },
     "mixins": [
