@@ -3,8 +3,9 @@
 ## 開発環境のセットアップ
 
 ### 前提条件
-- Java 21以上
+- Java 25（C:\Program Files\java\graalvm-jdk-25.0.1+8.1）
 - Git
+- VSCode（推奨）またはコマンドライン
 
 ### ステップ1: リポジトリをクローン
 
@@ -13,51 +14,88 @@ git clone <repository-url>
 cd DiscordChatRelay
 ```
 
-### ステップ2: プロジェクトをセットアップ
-
-#### オプションA: IntelliJ IDEAで開く（推奨）
-
-1. IntelliJ IDEAを起動
-2. "Open Project" → プロジェクトフォルダを選択
-3. IDEAが自動的にGradleプロジェクトを認識してセットアップします
-4. "Gradle" パネルを開いて `build` タスクを実行
-
-#### オプションB: VSCodeで開く
+### ステップ2: 方法A - VSCodeで開く（推奨）
 
 1. VSCodeを起動
-2. フォルダを開く
-3. `build.gradle` を開く
-4. 推奨される拡張機能をインストール
-5. ターミナルで `./gradlew build` を実行
+2. `File → Open Folder` → `DiscordChatRelay` フォルダ選択
+3. VSCodeが自動的にJava環境を認識します
+4. Extension Packをインストール推奨：
+   - Extension Pack for Java
+   - Gradle for Java
 
-### ステップ3: 開発サーバーの起動
+### ステップ3: 方法B - コマンドラインでビルド
 
+#### Windows
 ```bash
-./gradlew runClient
+cd C:\Users\waras\Workspace\DiscordChatRelay
+build.bat build
 ```
 
-## ビルド
-
+#### Linux/Mac
 ```bash
+cd ~/DiscordChatRelay
+./build.sh build
+```
+
+## ビルドコマンド
+
+### Windows
+```bash
+# 単純なビルド
+build.bat build
+
+# 既存ファイルをクリアしてビルド
+build.bat clean build
+
+# ビルドツールをクリア
+build.bat clean
+```
+
+### Linux/Mac/PowerShell
+```bash
+# 単純なビルド
 ./gradlew build
+
+# 既存ファイルをクリアしてビルド
+./gradlew clean build
+
+# ビルドツールをクリア
+./gradlew clean
 ```
 
-成功すると、`build/libs/discord-chat-relay-1.0.0.jar` が生成されます。
+## ビルド出力
+
+成功時：
+```
+build/libs/discord-chat-relay-1.0.0.jar
+```
+
+## VSCodeでの開発
+
+### タスク実行
+1. `Ctrl+Shift+B` → "Gradle: build" を選択
+2. または、`Ctrl+Shift+P` → "Tasks: Run Task" → "Gradle: ..."
+
+### デバッグ
+- Java Language Serverが自動的にクラスを解析します
+- エラーのあるコードは波線で表示されます
+- `Ctrl+Click` でクラス定義へジャンプ
 
 ## トラブルシューティング
 
-### Gradleがダウンロードできない
+### Gradleダウンロードエラー
+- インターネット接続を確認してください
+- プロキシを使用している場合は `gradle.properties` を編集してください
 
-Gradleが自動的にダウンロードされます。インターネット接続を確認してください。
-
-### ビルドエラーが発生する
-
+### ビルドエラー
 ```bash
-./gradlew clean build
+build.bat clean build
 ```
 
 で依存関係を再度ダウンロードしてください。
 
-### Discord4Jのコンパイルエラー
-
-プロジェクトをリロードしてください（IDEAでは `File → Invalidate Caches → Invalidate and Restart`）。
+### Java バージョンエラー
+Java 25 がインストールされていることを確認：
+```bash
+C:\Program Files\java\graalvm-jdk-25.0.1+8.1\bin\java -version
+```
