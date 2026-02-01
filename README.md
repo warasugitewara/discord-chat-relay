@@ -9,7 +9,7 @@
 ## ✨ 機能
 
 - ✅ **チャット自動リレー** - プレイヤーメッセージとシステムメッセージを Discord に送信
-- ⚙️ **ModMenu統合** - GUI でトークンと Channel ID を設定
+- ⚙️ **チャットコマンド** - `/dcr` コマンドでシンプルに設定
 - 📊 **BetterF3統合** - F3 画面に接続状態を表示
 - 🔄 **自動再接続** - Discord 接続の切断時に自動的に再接続
 - 🛡️ **セキュア** - トークンはローカル設定ファイルに保存
@@ -47,15 +47,29 @@
 1. MOD JAR をダウンロード → `%APPDATA%\.minecraft\mods\` にコピー
 2. Minecraft を起動（Quilt で起動）
 
-#### 4️⃣ MOD を設定
-1. Minecraft のメインメニューで **MOD** ボタンをクリック
-2. **Discord Chat Relay** を検索
-3. **Config** をクリック
-4. 以下を入力：
-   - **Bot Token**: コピーしたトークン
-   - **Channel ID**: 取得した Channel ID
-   - **Enabled**: ON にする
-5. 保存して完了
+#### 4️⃣ MOD を設定（チャットコマンド使用）
+
+ゲーム内でチャットを開き、以下のコマンドを入力：
+
+```
+/dcr token <YOUR_DISCORD_BOT_TOKEN>
+/dcr channel <CHANNEL_ID>
+/dcr toggle
+```
+
+**例:**
+```
+/dcr token YOUR_ACTUAL_BOT_TOKEN_HERE
+/dcr channel 123456789012345678
+/dcr toggle
+```
+
+**各コマンド:**
+- `/dcr token <token>` - Discord Bot Token を設定
+- `/dcr channel <id>` - Discord Channel ID を設定
+- `/dcr toggle` - MOD の ON/OFF を切り替え
+- `/dcr status` - 現在の設定状態を表示
+- `/dcr reload` - 設定ファイルをリロード
 
 ---
 
@@ -70,11 +84,14 @@
 
 ### ステータス確認
 ```
-F3 キーを押す → BetterF3 HUD に接続状態が表示されます
+チャット内でコマンドを実行：
+/dcr status  - 現在の接続状態と設定を表示
+```
+
+または、F3 キーを押す → BetterF3 HUD に接続状態が表示されます：
 - 🟢 Connected - Discord に接続中
 - 🔴 Connecting... - 接続試行中
 - ⚪ Disabled - MOD が無効
-```
 
 ### トラブルシューティング
 
