@@ -1,7 +1,7 @@
 plugins {
 	id "java"
 	id "maven-publish"
-	id "org.quiltmc.loom" version "+"
+	id "org.quiltmc.loom" version "1.7.+"
 }
 
 base {
@@ -9,8 +9,8 @@ base {
 }
 
 java {
-	sourceCompatibility = JavaVersion.VERSION_25
-	targetCompatibility = JavaVersion.VERSION_25
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
 }
 
 repositories {
@@ -26,26 +26,25 @@ dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
 	mappings loom.layered() {
 		officialMojangMappings()
-		parchment("org.parchmentmc.data:parchment-${project.parchment_version}@zip")
 	}
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
-	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
+	// modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
 	
 	// Discord4J
-	include implementation("com.discord4j:discord4j-core:3.2.7")
-	include implementation("com.discord4j:discord4j-rest:3.2.7")
-	include implementation("com.discord4j:discord4j-common:3.2.7")
-	include implementation("io.projectreactor:reactor-core:2022.0.0")
+	// include implementation("com.discord4j:discord4j-core:3.2.7")
+	// include implementation("com.discord4j:discord4j-rest:3.2.7")
+	// include implementation("com.discord4j:discord4j-common:3.2.7")
+	// include implementation("io.projectreactor:reactor-core:2022.0.0")
 	
-	// ModMenu and Cloth Config
-	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
+	// ModMenu and Cloth Config (optional)
+	// modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	// modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
 	
-	// BetterF3
-	modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
+	// BetterF3 (optional)
+	// modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
 	
 	// JSON handling
-	include implementation("com.google.code.gson:gson:2.10.1")
+	// include implementation("com.google.code.gson:gson:2.10.1")
 }
 
 processResources {
@@ -57,7 +56,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 25
+	it.options.release = 21
 }
 
 jar {
