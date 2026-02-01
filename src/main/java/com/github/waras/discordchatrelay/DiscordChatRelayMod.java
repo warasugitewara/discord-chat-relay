@@ -4,9 +4,36 @@ import com.github.waras.discordchatrelay.config.ModConfig;
 import com.github.waras.discordchatrelay.discord.DiscordBot;
 import com.github.waras.discordchatrelay.listener.ChatListener;
 import com.github.waras.discordchatrelay.hud.DiscordChatRelayHudProvider;
-import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
+
+// Fabric API for events only available in full build
+/*
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+
+	@Override
+	public void onInitialize(ModContainer mod) {
+		ModConfig.load();
+		
+		// Initialize Discord bot
+		discordBot = new DiscordBot();
+		
+		// Initialize chat listener
+		chatListener = new ChatListener();
+		
+		// Initialize BetterF3 HUD provider
+		DiscordChatRelayHudProvider.initialize();
+		
+		// Register tick event to handle periodic tasks
+		ClientTickEvents.END_CLIENT_TICK.register(client -> {
+			if (client.player != null && ModConfig.isEnabled()) {
+				discordBot.checkConnection();
+			}
+		});
+		
+		System.out.println("[Discord Chat Relay] Mod initialized v" + VERSION);
+	}
+*/
 
 public class DiscordChatRelayMod implements ModInitializer {
 	public static final String MOD_ID = "discord-chat-relay";
@@ -29,12 +56,8 @@ public class DiscordChatRelayMod implements ModInitializer {
 		// Initialize BetterF3 HUD provider
 		DiscordChatRelayHudProvider.initialize();
 		
-		// Register tick event to handle periodic tasks
-		ClientTickEvents.END_CLIENT_TICK.register(client -> {
-			if (client.player != null && ModConfig.isEnabled()) {
-				discordBot.checkConnection();
-			}
-		});
+		// Register tick event - stub version, full version requires Fabric API
+		// ClientTickEvents.END_CLIENT_TICK.register(client -> { ... });
 		
 		System.out.println("[Discord Chat Relay] Mod initialized v" + VERSION);
 	}

@@ -1,6 +1,9 @@
 package com.github.waras.discordchatrelay.discord;
 
 import com.github.waras.discordchatrelay.config.ModConfig;
+
+// Discord4J dependencies only available when built with VSCode Java Extension
+/*
 import discord4j.core.DiscordClient;
 import discord4j.core.GatewayDiscordClient;
 import discord4j.core.object.entity.channel.TextChannel;
@@ -85,5 +88,31 @@ public class DiscordBot {
 
 	public boolean isConnected() {
 		return isConnected;
+	}
+}
+*/
+
+// Stub implementation - actual Discord integration available when built with VSCode
+public class DiscordBot {
+	private boolean isConnected = false;
+
+	public void connect() {
+		// Stub - requires Discord4J
+	}
+
+	public void disconnect() {
+		isConnected = false;
+	}
+
+	public void sendMessage(String playerName, String message, boolean isSystemMessage) {
+		// Stub - requires Discord4J
+	}
+
+	public void checkConnection() {
+		// Stub - requires Discord4J
+	}
+
+	public boolean isConnected() {
+		return false;
 	}
 }

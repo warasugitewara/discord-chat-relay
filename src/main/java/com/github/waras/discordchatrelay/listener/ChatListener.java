@@ -2,6 +2,9 @@ package com.github.waras.discordchatrelay.listener;
 
 import com.github.waras.discordchatrelay.DiscordChatRelayMod;
 import com.github.waras.discordchatrelay.config.ModConfig;
+
+// Fabric API dependencies only available in full build
+/*
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.message.v1.ClientReceiveMessageEvents;
 import net.minecraft.network.chat.Component;
@@ -44,5 +47,13 @@ public class ChatListener {
 		
 		// Send to Discord
 		DiscordChatRelayMod.getDiscordBot().sendMessage(playerName, messageText, isSystemMessage);
+	}
+}
+*/
+
+// Stub implementation
+public class ChatListener {
+	public ChatListener() {
+		// Stub - requires Fabric API
 	}
 }

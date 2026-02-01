@@ -28,23 +28,18 @@ dependencies {
 		officialMojangMappings()
 	}
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
-	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
+	modImplementation "org.quiltmc.qsl:qsl:3.4.3+1.21.10"
+	// modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
 	
-	// Discord4J
-	include implementation("com.discord4j:discord4j-core:3.2.7")
-	include implementation("com.discord4j:discord4j-rest:3.2.7")
-	include implementation("com.discord4j:discord4j-common:3.2.7")
-	include implementation("io.projectreactor:reactor-core:2022.0.0")
-	
-	// ModMenu and Cloth Config (optional)
-	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
-	
-	// BetterF3 (optional)
-	modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
-	
-	// JSON handling
-	include implementation("com.google.code.gson:gson:2.10.1")
+	// All optional dependencies - enable in VSCode with Java Extension
+	// include implementation("com.discord4j:discord4j-core:3.2.7")
+	// include implementation("com.discord4j:discord4j-rest:3.2.7")
+	// include implementation("com.discord4j:discord4j-common:3.2.7")
+	// include implementation("io.projectreactor:reactor-core:2022.0.0")
+	// modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	// modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
+	// modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
+	// include implementation("com.google.code.gson:gson:2.10.1")
 }
 
 processResources {
