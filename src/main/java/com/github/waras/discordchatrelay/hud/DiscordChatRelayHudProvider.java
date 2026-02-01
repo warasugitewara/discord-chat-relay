@@ -1,9 +1,11 @@
 package com.github.waras.discordchatrelay.hud;
 
+// BetterF3 integration requires BetterF3 mod in classpath
+// Full implementation commented out for CLI build
+/*
 import com.github.waras.discordchatrelay.DiscordChatRelayMod;
 import com.github.waras.discordchatrelay.config.ModConfig;
 import net.minecraft.network.chat.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +26,11 @@ public class DiscordChatRelayHudProvider {
 
 	private static void registerWithBetterF3() {
 		try {
-			// Dynamically register with BetterF3 if available
 			me.cominixo.betterf3.api.HudProviderRegistry.register(new me.cominixo.betterf3.api.HudProvider() {
 				@Override
 				public List<Component> getLines(me.cominixo.betterf3.api.Sections section) {
 					List<Component> lines = new ArrayList<>();
 
-					// Show in MISC section
 					if (section == me.cominixo.betterf3.api.Sections.MISC) {
 						lines.add(Component.literal("§e--- Discord Chat Relay ---"));
 						
@@ -65,5 +65,19 @@ public class DiscordChatRelayHudProvider {
 
 	public static boolean isBetterF3Available() {
 		return betterF3Available;
+	}
+}
+*/
+
+// Stub for CLI build
+public class DiscordChatRelayHudProvider {
+	private static boolean betterF3Available = false;
+
+	public static void initialize() {
+		System.out.println("[Discord Chat Relay] BetterF3 integration disabled (requires BetterF3 mod)");
+	}
+
+	public static boolean isBetterF3Available() {
+		return false;
 	}
 }

@@ -28,7 +28,7 @@ dependencies {
 		officialMojangMappings()
 	}
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
-	modImplementation "org.quiltmc.qsl:qsl:3.4.3+1.21.10"
+	// modImplementation "org.quiltmc.qsl:qsl:3.4.3+1.21.10"
 	// modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
 	
 	// All optional dependencies - enable in VSCode with Java Extension

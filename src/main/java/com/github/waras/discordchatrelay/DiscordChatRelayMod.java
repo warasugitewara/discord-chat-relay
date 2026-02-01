@@ -4,12 +4,20 @@ import com.github.waras.discordchatrelay.config.ModConfig;
 import com.github.waras.discordchatrelay.discord.DiscordBot;
 import com.github.waras.discordchatrelay.listener.ChatListener;
 import com.github.waras.discordchatrelay.hud.DiscordChatRelayHudProvider;
+
+// Full Mod class requires Quilt Loader, which will be available in full build
+/*
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
-
-// Fabric API for events only available in full build
-/*
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
+
+public class DiscordChatRelayMod implements ModInitializer {
+	public static final String MOD_ID = "discord-chat-relay";
+	public static final String MOD_NAME = "Discord Chat Relay";
+	public static final String VERSION = "1.0.0";
+
+	private static DiscordBot discordBot;
+	private static ChatListener chatListener;
 
 	@Override
 	public void onInitialize(ModContainer mod) {
@@ -33,9 +41,19 @@ import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 		
 		System.out.println("[Discord Chat Relay] Mod initialized v" + VERSION);
 	}
+
+	public static DiscordBot getDiscordBot() {
+		return discordBot;
+	}
+
+	public static ChatListener getChatListener() {
+		return chatListener;
+	}
+}
 */
 
-public class DiscordChatRelayMod implements ModInitializer {
+// Stub for CLI build - full implementation requires Quilt Loader
+public class DiscordChatRelayMod {
 	public static final String MOD_ID = "discord-chat-relay";
 	public static final String MOD_NAME = "Discord Chat Relay";
 	public static final String VERSION = "1.0.0";
@@ -43,22 +61,11 @@ public class DiscordChatRelayMod implements ModInitializer {
 	private static DiscordBot discordBot;
 	private static ChatListener chatListener;
 
-	@Override
-	public void onInitialize(ModContainer mod) {
+	public static void initialize() {
 		ModConfig.load();
-		
-		// Initialize Discord bot
 		discordBot = new DiscordBot();
-		
-		// Initialize chat listener
 		chatListener = new ChatListener();
-		
-		// Initialize BetterF3 HUD provider
 		DiscordChatRelayHudProvider.initialize();
-		
-		// Register tick event - stub version, full version requires Fabric API
-		// ClientTickEvents.END_CLIENT_TICK.register(client -> { ... });
-		
 		System.out.println("[Discord Chat Relay] Mod initialized v" + VERSION);
 	}
 
