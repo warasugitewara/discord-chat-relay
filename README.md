@@ -1,6 +1,6 @@
 # 🎮 Discord Chat Relay
 
-**Minecraft 1.21.10 Quilt クライアント側 MOD**
+**Minecraft 1.21.10 Quilt Client Side MOD**
 
 ゲーム内チャットメッセージを Discord に自動リレーします。
 
