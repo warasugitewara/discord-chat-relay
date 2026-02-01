@@ -99,6 +99,11 @@ public class DiscordBot {
 	public void connect() {
 		// Stub - requires Discord4J
 	}
+	
+	public void connect(String token, String channelId) {
+		// Stub - requires Discord4J
+		// Would set up connection with provided token and channel
+	}
 
 	public void disconnect() {
 		isConnected = false;

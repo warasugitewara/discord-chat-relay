@@ -30,13 +30,15 @@ dependencies {
 	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${fabric_api_version}"
 	
+	// ModMenu and Cloth Config - requires VSCode Java Extension for full build
+	// modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	// modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
+	
 	// All optional dependencies - enable in VSCode with Java Extension
 	// include implementation("com.discord4j:discord4j-core:3.2.7")
 	// include implementation("com.discord4j:discord4j-rest:3.2.7")
 	// include implementation("com.discord4j:discord4j-common:3.2.7")
 	// include implementation("io.projectreactor:reactor-core:2022.0.0")
-	// modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
-	// modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
 	// modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
 	// include implementation("com.google.code.gson:gson:2.10.1")
 }

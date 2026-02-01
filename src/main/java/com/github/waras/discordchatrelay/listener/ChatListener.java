@@ -2,6 +2,7 @@ package com.github.waras.discordchatrelay.listener;
 
 import com.github.waras.discordchatrelay.DiscordChatRelayMod;
 import com.github.waras.discordchatrelay.config.ModConfig;
+import com.github.waras.discordchatrelay.command.DiscordChatRelayCommand;
 
 // Fabric API dependencies only available in full build
 /*
@@ -15,6 +16,14 @@ public class ChatListener {
 		// Register chat event listener
 		ClientReceiveMessageEvents.CHAT.register((message, overlay) -> {
 			if (!overlay && ModConfig.isEnabled()) {
+				String plainText = message.getString();
+				
+				// Check for /dcr command
+				if (plainText.startsWith("/dcr")) {
+					DiscordChatRelayCommand.handleCommand(plainText);
+					return;
+				}
+				
 				handleChatMessage(message, false);
 			}
 		});
@@ -51,9 +60,13 @@ public class ChatListener {
 }
 */
 
-// Stub implementation
+// Stub implementation with command handling
 public class ChatListener {
 	public ChatListener() {
-		// Stub - requires Fabric API
+		// Stub - requires Fabric API for full implementation
+	}
+	
+	public static boolean processCommand(String message) {
+		return DiscordChatRelayCommand.handleCommand(message);
 	}
 }
