@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "quilt_loader": {
+    "group": "com.github.waras",
+    "id": "discord-chat-relay",
+    "version": "${version}",
+    "metadata": {
+      "name": "Discord Chat Relay",
+      "description": "Client-side mod to relay Minecraft chat messages to Discord",
+      "contributors": {
+        "waras": "Author"
+      },
+      "contact": {},
+      "license": "MIT",
+      "icon": "assets/discord-chat-relay/icon.png"
+    },
+    "intermediate_mappings": "net.fabricmc:intermediary",
+    "entrypoints": {
+      "init": [
+        "com.github.waras.discordchatrelay.DiscordChatRelayMod"
+      ],
+      "modmenu": [
+        "com.github.waras.discordchatrelay.screen.ModMenuConfigScreen"
+      ]
+    },
+    "mixins": [
+      "discord-chat-relay.mixins.json"
+    ],
+    "depends": [
+      {
+        "id": "quilt_loader",
+        "versions": ">=0.27.0"
+      },
+      {
+        "id": "quilted_fabric_api",
+        "versions": "*"
+      },
+      {
+        "id": "modmenu",
+        "versions": ">=12.0.0",
+        "optional": true
+      }
+    ]
+  }
+}

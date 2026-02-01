@@ -1,0 +1,82 @@
+plugins {
+	id "java"
+	id "maven-publish"
+	id "org.quiltmc.loom" version "+"
+}
+
+base {
+	archivesName = project.archives_base_name
+}
+
+java {
+	sourceCompatibility = JavaVersion.VERSION_21
+	targetCompatibility = JavaVersion.VERSION_21
+}
+
+repositories {
+	maven { url "https://maven.quiltmc.org/repository/release" }
+	maven { url "https://maven.quiltmc.org/repository/snapshot" }
+	maven { url "https://maven.fabricmc.net/" }
+	maven { url "https://maven.terraformersmc.com/releases/" }
+	maven { url "https://api.modrinth.com/maven" }
+	mavenCentral()
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	mappings loom.layered() {
+		officialMojangMappings()
+		parchment("org.parchmentmc.data:parchment-${project.parchment_version}@zip")
+	}
+	modImplementation "org.quiltmc:quilt-loader:${project.loader_version}"
+	modImplementation "org.quiltmc.quilted-fabric-api:quilted-fabric-api:${project.fapi_version}-${project.minecraft_version}"
+	
+	// Discord4J
+	include implementation("com.discord4j:discord4j-core:3.2.7")
+	include implementation("com.discord4j:discord4j-rest:3.2.7")
+	include implementation("com.discord4j:discord4j-common:3.2.7")
+	include implementation("io.projectreactor:reactor-core:2022.0.0")
+	
+	// ModMenu and Cloth Config
+	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+	modImplementation "me.shedaniel.cloth:cloth-config-${project.minecraft_version}:${project.cloth_config_version}"
+	
+	// BetterF3
+	modImplementation "maven.modrinth:betterf3:${project.betterf3_version}"
+	
+	// JSON handling
+	include implementation("com.google.code.gson:gson:2.10.1")
+}
+
+processResources {
+	inputs.property "version", project.version
+
+	filesMatching("quilt.mod.json") {
+		expand "version": project.version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 21
+}
+
+jar {
+	from("LICENSE") {
+		rename { "${it}_${project.archives_base_name}" }
+	}
+}
+
+publishing {
+	publications {
+		mavenJava(MavenPublication) {
+			from components.java
+		}
+	}
+
+	repositories {
+		// Add repositories to publish to here.
+		// Notice: This block does NOT have the same name as the block in the buildscript block above.
+		// If you want to publish to the same repo as the other artifacts, you'll need to have two different
+		// repository blocks.
+	}
+}
